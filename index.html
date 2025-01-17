@@ -149,7 +149,7 @@
         // Función para copiar al portapapeles
         function copyToClipboard(number) {
             navigator.clipboard.writeText(number).then(() => {
-                alert(`Número ${number} copiado al portapapeles`);
+               // alert(`Número ${number} copiado al portapapeles`);
             }).catch(err => {
                 console.error('Error al copiar al portapapeles: ', err);
             });
