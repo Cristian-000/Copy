@@ -156,7 +156,7 @@
         }*/
         function copyToClipboard(number) {
     navigator.clipboard.writeText(number).then(() => {
-        showTemporaryMessage(`Número ${number} Copiado`);
+        showTemporaryMessage(`Número ${number} copiado al portapapeles`);
     }).catch(err => {
         console.error('Error al copiar al portapapeles: ', err);
     });
@@ -166,22 +166,24 @@ function showTemporaryMessage(message) {
     const messageBox = document.createElement('div');
     messageBox.textContent = message;
     messageBox.style.position = 'fixed';
-    messageBox.style.bottom = '20px';
-    messageBox.style.right = '20px';
+    messageBox.style.top = '50%';
+    messageBox.style.left = '50%';
+    messageBox.style.transform = 'translate(-50%, -50%)'; // Centra el mensaje
     messageBox.style.backgroundColor = '#800020';
     messageBox.style.color = 'white';
-    messageBox.style.padding = '10px 20px';
+    messageBox.style.padding = '15px 30px';
     messageBox.style.borderRadius = '5px';
-    messageBox.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.3)';
+    messageBox.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
     messageBox.style.zIndex = '1000';
+    messageBox.style.textAlign = 'center';
+    messageBox.style.fontSize = '16px';
     document.body.appendChild(messageBox);
 
     // Eliminar el mensaje después de 3 segundos
     setTimeout(() => {
         document.body.removeChild(messageBox);
-    }, 3000);
+    }, 2500);
 }
-
         // Cargar las listas
         loadList(homeServices, 'homeServicesList');
         loadList(bankAccounts, 'bankAccountsList');
