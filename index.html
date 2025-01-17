@@ -156,7 +156,7 @@
         }*/
         function copyToClipboard(number) {
     navigator.clipboard.writeText(number).then(() => {
-        showTemporaryMessage(`Número ${number} copiado al portapapeles`);
+        showTemporaryMessage(`Número ${number} copiado`);
     }).catch(err => {
         console.error('Error al copiar al portapapeles: ', err);
     });
