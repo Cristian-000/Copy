@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Números</title>
+    <style>
+        :root {
+            --color-fondo: #f9f9f9;
+            --color-texto: #333;
+            --color-boton: #800020;
+            --color-boton-hover: #a0002a;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info {
+            flex-grow: 1;
+        }
+
+        .title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .number {
+            color: #555;
+        }
+
+        button {
+            background: var(--color-boton);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: var(--color-boton-hover);
+        }
+
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Números</h1>
+        <ul id="numberList">
+            <!-- Los números se agregarán aquí -->
+        </ul>
+    </div>
+
+    <script>
+        // Lista de números con títulos
+        const numbers = [
+            { title: "Contacto 1", number: "1234567890" },
+            { title: "Contacto 2", number: "9876543210" },
+            { title: "Soporte Técnico", number: "5555555555" },
+        ];
+
+        const numberList = document.getElementById('numberList');
+
+        // Cargar la lista en el HTML
+        numbers.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="info">
+                    <div class="title">${item.title}</div>
+                    <div class="number">${item.number}</div>
+                </div>
+                <button onclick="copyToClipboard('${item.number}')">Copiar</button>
+            `;
+            numberList.appendChild(li);
+        });
+
+        // Función para copiar al portapapeles
+        function copyToClipboard(number) {
+            navigator.clipboard.writeText(number).then(() => {
+                alert(`Número ${number} copiado al portapapeles`);
+            }).catch(err => {
+                console.error('Error al copiar al portapapeles: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
