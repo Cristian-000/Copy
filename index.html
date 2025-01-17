@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Números</title>
+    <title>Listas de Números</title>
     <style>
         :root {
             --color-fondo: #f9f9f9;
@@ -11,7 +11,7 @@
             --color-boton: #800020;
             --color-boton-hover: #a0002a;
         }
-        
+
         body {
             font-family: Arial, sans-serif;
             background-color: var(--color-fondo);
@@ -27,11 +27,18 @@
 
         h1 {
             text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--color-texto);
+            margin-top: 20px;
         }
 
         ul {
             list-style: none;
             padding: 0;
+            margin-bottom: 30px;
         }
 
         li {
@@ -79,34 +86,59 @@
 </head>
 <body>
     <div class="container">
-        <h1>Lista de Números</h1>
-        <ul id="numberList">
-            <!-- Los números se agregarán aquí -->
+        <h1>Listas de Números</h1>
+
+        <h2>Servicios de Casa</h2>
+        <ul id="homeServicesList">
+            <!-- Lista de servicios de casa -->
+        </ul>
+
+        <h2>Cuentas Bancarias</h2>
+        <ul id="bankAccountsList">
+            <!-- Lista de cuentas bancarias -->
+        </ul>
+
+        <h2>Teléfonos</h2>
+        <ul id="phonesList">
+            <!-- Lista de teléfonos -->
         </ul>
     </div>
 
     <script>
-        // Lista de números con títulos
-        const numbers = [
-            { title: "Cuenta de tal cosa", number: "1234567890" },
-            { title: "Servicio tal", number: "9876543210" },
-            { title: "Estoy chochasa", number: "5555555555" },
+        // Datos de las listas
+        const homeServices = [
+            { title: "UTE", number: "123-456-7890" },
+            { title: "OSE", number: "987-654-3210" },
+            { title: "ANTEL", number: "555-666-7777" },
         ];
 
-        const numberList = document.getElementById('numberList');
+        const bankAccounts = [
+            { title: "Cuenta de Cativelly", number: "1234-5678-9012" },
+            { title: "Cuenta tal", number: "8765-4321-0987" },
+            { title: "Banco de tal y cual", number: "5555-6666-7777" },
+        ];
 
-        // Cargar la lista en el HTML
-        numbers.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <div class="info">
-                    <div class="title">${item.title}</div>
-                    <div class="number">${item.number}</div>
-                </div>
-                <button onclick="copyToClipboard('${item.number}')">Copiar</button>
-            `;
-            numberList.appendChild(li);
-        });
+        const phones = [
+            { title: "Contacto Personal", number: "111-222-3333" },
+            { title: "Oficina", number: "444-555-6666" },
+            { title: "Emergencias", number: "911" },
+        ];
+
+        // Función para cargar listas dinámicamente
+        function loadList(data, listId) {
+            const listElement = document.getElementById(listId);
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div class="info">
+                        <div class="title">${item.title}</div>
+                        <div class="number">${item.number}</div>
+                    </div>
+                    <button onclick="copyToClipboard('${item.number}')">Copiar</button>
+                `;
+                listElement.appendChild(li);
+            });
+        }
 
         // Función para copiar al portapapeles
         function copyToClipboard(number) {
@@ -116,6 +148,11 @@
                 console.error('Error al copiar al portapapeles: ', err);
             });
         }
+
+        // Cargar las listas
+        loadList(homeServices, 'homeServicesList');
+        loadList(bankAccounts, 'bankAccountsList');
+        loadList(phones, 'phonesList');
     </script>
 </body>
 </html>
