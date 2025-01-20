@@ -97,7 +97,11 @@
         <ul id="homeServicesList">
             <!-- Lista de servicios de casa -->
         </ul>
-
+<h2>Servicios Casa NUEVA</h2>
+        <ul id="homeServicesList2">
+            <!-- Lista de servicios de casa -->
+        </ul>
+        
         <h2>Cuentas Bancarias</h2>
         <ul id="bankAccountsList">
             <!-- Lista de cuentas bancarias -->
@@ -116,6 +120,11 @@
             { title: "OSE", number: "37087844" },
             { title: "ANTEL contrato", number: "24028509000160" },
             { title: "ANTEL numero telefono", number: "42260496" },
+            
+        ];
+        const homeServices2 = [
+            { title: "UTE obra provisorio", number: "4503852854" }
+            
         ];
 
         const bankAccounts = [
@@ -186,6 +195,8 @@ function showTemporaryMessage(message) {
 }
         // Cargar las listas
         loadList(homeServices, 'homeServicesList');
+        loadList(homeServices2, 'homeServicesList2');
+
         loadList(bankAccounts, 'bankAccountsList');
         loadList(phones, 'phonesList');
     </script>
